@@ -1,0 +1,27 @@
+[
+  {
+    "image": "src/slide_image.jpg",
+    "name": "제품명1",
+    "price": "가격1"
+  },
+  {
+    "image": "src/slide_image.jpg",
+    "name": "제품명2",
+    "price": "가격2"
+  },
+  {
+    "image": "src/slide_image.jpg",
+    "name": "제품명3",
+    "price": "가격3"
+  },
+  {
+    "image": "src/slide_image.jpg",
+    "name": "제품명4",
+    "price": "가격4"
+  },
+  {
+    "image": "src/slide_image.jpg",
+    "name": "제품명5",
+    "price": "가격5"
+  }
+]

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <script
+      defer
+      type="module"
+      src="/src/pages/order_edit/order_delte_complete.js"
+    ></script>
+  </head>
+  <body>
+    <!-- 주문 완료 페이지 -->
+    <main role="main" class="w-3/5 mx-auto mt-1 bg-white" id="main-page">
+      <article>
+        <!-- 결제 헤드라인 -->
+        <div class="flex justify-between items-end py-14 whitespace-nowrap">
+          <h2 class="text-4xl font-medium text-left align-left">주문취소</h2>
+        </div>
+        <div class="pt-8 border-solid border-t-2 border-color-ter">
+          <p class="text-2xl font-bold mt-12">
+            주문이 성공적으로 취소되었습니다.
+          </p>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-trash mx-auto my-8"
+          width="350"
+          height="350"
+          viewBox="0 0 24 24"
+          stroke-width="0.5"
+          stroke="#607c5f"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <line x1="4" y1="7" x2="20" y2="7" />
+          <line x1="10" y1="11" x2="10" y2="17" />
+          <line x1="14" y1="11" x2="14" y2="17" />
+          <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" />
+          <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" />
+        </svg>
+        <div class="flex justify-between items-end py-14 whitespace-nowrap">
+          <h3 class="text-3xl font-medium text-left align-left">
+            이런 상품은 어떠세요?
+          </h3>
+          <div class="pt-8 border-solid border-t-2 border-color-ter"></div>
+        </div>
+        <!-- 추천 상품 슬라이더 -->
+        <div class="relative h-80 flex items-start justify-center items-center">
+          <div class="absolute left-0 top-1/2 transform -translate-y-1/2">
+            <svg
+              id="recommended-list-left-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-12 h-12 z-10 cursor-pointer"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 19.5L8.25 12l7.5-7.5"
+              />
+            </svg>
+          </div>
+          <div class="absolute right-0 top-1/2 transform -translate-y-1/2">
+            <svg
+              id="recommended-list-right-arrow"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-12 h-12 z-10 cursor-pointer"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </div>
+
+          <div class="overflow-hidden w-[1100px] flex items-center scale-90">
+            <ul class="flex items-center" id="recommended-list-slides">
+              <!-- JS를 통해 li가 구현될 것임 -->
+            </ul>
+          </div>
+        </div>
+      </article>
+    </main>
+    <!-- 주문 완료 페이지 끝 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

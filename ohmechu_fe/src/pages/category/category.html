@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="/src/pages/category/category.js"></script>
+  </head>
+  <body>
+    <!-- 메인 페이지 -->
+    <main
+      role="main"
+      class="w-3/4 mx-auto mt-1 flex justify-around"
+      id="main-page"
+    >
+      <div class="relative mt-20 pr-10">
+        <div class="sticky top-0">
+          <h2 id="category-title" class="text-4xl mb-4 text-right">
+            전체 상품
+          </h2>
+          <img
+            id="category-image"
+            src="/src/img/food-6.jpg"
+            class="w-[500px] h-[900px] object-cover"
+            alt="오메추 전체상품"
+          />
+        </div>
+      </div>
+      <div class="inline-block w-2/3 mx-auto">
+        <article>
+          <div class="flex flex-col mt-24 justify-center">
+            <div class="h-8 mb-6 flex justify-start items-center">
+              <span
+                data-category="ascName"
+                class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >전체 상품</span
+              >
+              <span
+                data-category="korean"
+                class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >한식</span
+              >
+              <span
+                data-category="chinese"
+                class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >중식</span
+              >
+              <span
+                data-category="japanese"
+                class="category-button inline-block px-3 transform border-b-2 mr-10 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >일식</span
+              >
+              <span
+                data-category="western"
+                class="category-button inline-block px-3 transform border-b-2 text-[14pt] ease-in duration-300 hover:border-[#22392a] whitespace-nowrap cursor-pointer"
+                >양식</span
+              >
+              <!-- 카테고리 클릭 이벤트 - 각 a태그에서 클릭된 것 밑줄 유지하도록 classList.add 화면 이동 막기 위해 preventDefault()를 잊지 맙시당. -->
+            </div>
+          </div>
+        </article>
+        <article class="mb-32">
+          <div
+            class="p-2 mb-2 text-[14pt] font-medium text-left border-b-2 border-color-ter"
+          >
+            <span class="inline-block"
+              >총
+              <span id="product-amount" class="inline-block ml-2">0</span
+              >건</span
+            >
+          </div>
+          <ul id="product-box" class="flex flex-wrap flex-shrink-0">
+            <!-- JS를 통해 li가 구현될 것임 -->
+          </ul>
+        </article>
+      </div>
+    </main>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

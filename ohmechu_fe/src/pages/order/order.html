@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <script defer type="module" src="/src/pages/order/order.js"></script>
+  </head>
+  <body>
+    <!-- 주문결제 페이지 -->
+    <main role="main" class="w-3/5 mx-auto mt-1" id="main-page">
+      <article>
+        <!-- 결제 헤드라인 -->
+        <div class="flex justify-between items-end py-14 whitespace-nowrap">
+          <h2 class="text-4xl font-medium text-left align-left">주문결제</h2>
+          <div class="text-xl">
+            <span class="inline-block align-middle text-stone-400"
+              >01 장바구니</span
+            >
+            <p class="inline-block align-middle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-6 align-middle mx-1 stroke-stone-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </p>
+            <span class="inline-block align-middle">02 주문결제</span>
+            <p class="inline-block align-middle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-6 align-middle mx-1"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </p>
+            <span class="inline-block align-middle text-stone-400"
+              >03 주문완료</span
+            >
+          </div>
+        </div>
+        <!-- 결제 상품 내용 -->
+        <div class="flex inline-block text-[16pt] font-medium text-left pb-3">
+          <span>총 주문 <span id="order-amount">0</span>건</span>
+        </div>
+        <!-- 상품 리스트 -->
+        <div class="pt-4 border-solid border-t-2 border-color-ter">
+          <ul id="order-list" class="flex flex-col item-center"></ul>
+        </div>
+
+        <div
+          class="flex inline-block text-[16pt] font-medium text-left pb-3 mt-20 border-solid border-b-2 border-color-ter text-left"
+        >
+          배송지 정보
+        </div>
+        <form id="userOrderInput" method="post" class="w-[75%]">
+          <table class="my-3">
+            <tr>
+              <td>
+                <label
+                  for="receiver-name"
+                  class="text-lg font-medium text-left mr-6"
+                  >받는사람</label
+                >
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="receiver-name"
+                  name="receiver-name"
+                  placeholder="앨리수"
+                  class="w-full transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label
+                  for="receiver-phone-number"
+                  class="inline-block text-lg font-medium text-left mr-10"
+                  >연락처</label
+                >
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="receiver-phone-number"
+                  name="receiver-phone-number"
+                  placeholder="010-1234-5678"
+                  class="w-full transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
+                  required
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="inline-block text-lg font-medium text-left"
+                  >주소</label
+                >
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="postcode"
+                  class="transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
+                  placeholder="우편번호"
+                /><input
+                  type="button"
+                  id="getuserAddress"
+                  class="ml-4 inline-block py-2 px-4 mb-4 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-sm font-medium focus:outline-none cursor-pointer"
+                  value="우편번호 찾기"
+                /><br />
+                <input
+                  type="text"
+                  id="roadAddress"
+                  class="w-1/3 transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
+                  placeholder="주소"
+                />
+                <span id="guide" style="color: #999; display: none"></span>
+                <input
+                  type="text"
+                  id="detailAddress"
+                  class="w-1/3 transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
+                  placeholder="상세주소"
+                />
+                <input
+                  type="text"
+                  id="extraAddress"
+                  class="w-1/3 transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
+                  placeholder="참고항목"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label
+                  for="userRequest"
+                  class="text-lg font-medium text-left mr-6"
+                  >요청사항</label
+                >
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="userRequest"
+                  name="userRequest"
+                  placeholder="문 앞에 놓아주세요."
+                  class="w-full transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
+                />
+              </td>
+            </tr>
+          </table>
+        </form>
+        <div class="w-full flex justify-end mt-8">
+          <button
+            type="button"
+            id="reset-receiver"
+            class="inline-block py-3 px-8 mr-6 border border-color-sec hover:bg-[#22392a] hover:border-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
+          >
+            배송지 초기화
+          </button>
+        </div>
+        <div
+          class="flex inline-block text-[16pt] font-medium text-left pb-3 mt-20 border-solid border-b-2 border-color-ter text-left"
+        >
+          결제 정보
+        </div>
+        <div class="name flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">구매 금액</p>
+          <p class="text-lg font-medium text-left" id="purchasePrice"></p>
+          <span class="text-lg font-medium text-left"> 원</span>
+        </div>
+        <div class="phone flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">배송비</p>
+          <p class="text-lg font-medium text-left" id="delivery-price"></p>
+          <span class="text-lg font-medium text-left"> 원</span>
+        </div>
+        <div class="address flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">합계</p>
+          <p class="text-lg font-medium text-left" id="total-price"></p>
+          <span class="text-lg font-medium text-left"> 원</span>
+        </div>
+        <div class="mt-16">
+          <button
+            type="button"
+            id="orderComplete"
+            class="inline-block py-4 px-14 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none"
+          >
+            결제하기
+          </button>
+        </div>
+      </article>
+    </main>
+    <!-- 주문 결제 끝 -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

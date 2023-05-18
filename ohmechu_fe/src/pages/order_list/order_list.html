@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="order_list.js"></script>
+  </head>
+  <body>
+    <!-- 메인 페이지 -->
+    <main role="main" class="w-3/5 mx-auto mt-1" id="main-page">
+      <article>
+        <div class="flex flex-col h-80 justify-center items-center pt-14">
+          <h2 class="text-4xl font-medium mb-10 tracking-tight">
+            주문 / 배송 조회
+          </h2>
+          <div
+            class="flex w-3/5 h-3/5 mb-20 justify-evenly items-center border-neutral-300 border"
+          >
+            <div class="w-32 h-32">
+              <div
+                class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+              >
+                배송준비중
+              </div>
+              <div
+                id="ready-order-amount"
+                class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+              >
+                0
+              </div>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="rgb(82,82,82)"
+              class="w-12 h-12"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+            <div class="w-32 h-32">
+              <div
+                class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+              >
+                배송중
+              </div>
+              <div
+                id="delivery-order-amount"
+                class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+              >
+                0
+              </div>
+            </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="rgb(82,82,82)"
+              class="w-12 h-12"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+            <div class="w-32 h-32">
+              <div
+                class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+              >
+                배송완료
+              </div>
+              <div
+                id="complete-order-amount"
+                class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+              >
+                0
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="p-2 text-[18pt] font-medium text-left border-b-2 border-color-ter"
+        >
+          <span class="inline-block"
+            >총
+            <span id="order-amount" class="inline-block ml-2">0</span>건</span
+          >
+        </div>
+      </article>
+      <article id="order-list-box" class="flex flex-col flex-shrink-0">
+        <!-- JS를 통해 div및 ul,li가 구현될 것임 -->
+      </article>
+    </main>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

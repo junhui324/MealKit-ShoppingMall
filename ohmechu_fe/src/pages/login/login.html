@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="login.js"></script>
+  </head>
+  <body>
+    <!-- 메인 페이지 -->
+    <main
+      class="mx-auto flex h-auto w-full my-32 mb-48 items-center justify-center flex-col"
+    >
+      <div>
+        <form action="경로" id="userlogin" class="flex w-[30rem] flex-col">
+          <h2 class="text-center text-4xl font-medium mb-6">로그인</h2>
+          <!-- 아이디 input -->
+          <div
+            class="w-full my-4 transform border-b-2 bg-transparent text-lg ease-in duration-300 focus-within:border-[#22392a]"
+          >
+            <input
+              type="email"
+              id="user-id"
+              name="userId"
+              placeholder="아이디를 입력해주세요.(ohmechu@example.com)"
+              class="w-full border-none bg-transparent outline-none text-left placeholder:text-left focus:outline-none"
+            />
+          </div>
+          <!-- 비밀번호 input -->
+          <div
+            class="w-full my-4 transform border-b-2 bg-transparent text-lg ease-in duration-300 focus-within:border-[#22392a]"
+          >
+            <input
+              type="password"
+              id="user-password"
+              name="password"
+              placeholder="비밀번호를 입력해주세요."
+              class="w-full border-none bg-transparent outline-none text-left placeholder:text-left focus:outline-none"
+              minlength="6"
+              maxlength="20"
+            />
+          </div>
+
+          <input
+            type="submit"
+            value="로그인"
+            id="login-button"
+            class="inline-block py-4 px-14 my-4 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
+          />
+
+          <button
+            type="button"
+            id="signUp"
+            onclick="location.href
+            ='/src/pages/sign_up/sign_up.html';"
+            class="inline-block py-4 px-14 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none"
+          >
+            회원가입
+          </button>
+        </form>
+      </div>
+      <div>
+        <form action="경로2" id="nonUserlogin" class="flex w-[30rem] flex-col">
+          <div class="text-center text-2xl font-medium mt-9 mb-4">
+            회원이 아니신가요?
+          </div>
+          <div
+            class="w-full my-4 transform border-b-2 bg-transparent text-lg ease-in duration-300 focus-within:border-[#22392a]"
+          >
+            <input
+              type="text"
+              id="order-id"
+              name="user_id"
+              placeholder="주문 번호를 입력해주세요."
+              class="w-full border-none bg-transparent outline-none text-left placeholder:text-left focus:outline-none"
+            />
+          </div>
+          <input
+            type="button"
+            value="주문조회"
+            id="order-id-button"
+            class="inline-block py-4 px-14 my-4 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
+          />
+        </form>
+      </div>
+    </main>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

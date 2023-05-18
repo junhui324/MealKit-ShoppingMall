@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="mypage.js"></script>
+  </head>
+  <body>
+    <!-- 메인 페이지 -->
+    <main role="main" class="w-3/5 mx-auto mt-1" id="main-page">
+      <h2 class="text-4xl font-medium mb-10 tracking-tight pt-14">
+        마이페이지
+      </h2>
+      <!-- 여기서부터 회원정보 -->
+      <div
+        class="p-2 text-[18pt] font-medium text-left border-b-2 border-color-ter"
+      >
+        <span>회원정보</span>
+      </div>
+      <div class="relative mt-4">
+        <table class="text-lg font-medium text-left">
+          <tr>
+            <td class="w-[110px]"><span class="text-left">이름</span></td>
+            <td>
+              <span id="mypage-name" class=""></span>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="text-left">이메일</span></td>
+            <td>
+              <span id="mypage-email" class=""></span>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="text-left">패스워드</span></td>
+            <td>
+              <input
+                type="password"
+                id="user-password"
+                name="user-password"
+                placeholder="비밀번호 입력 후 회원 정보 수정이 가능합니다."
+                class="w-[500px] transform border-b-2 text-lg ease-in duration-300 focus-within:border-[#22392a] text-left placeholder-gray-300"
+                minlength="6"
+                maxlength="20"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><span class="text-left">연락처</span></td>
+            <td>
+              <span id="mypage-phone-number"></span>
+            </td>
+          </tr>
+        </table>
+        <button
+          type="button"
+          id="user-information-edit-page-button"
+          class="absolute right-0 inline-block py-3 px-8 mx-6 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
+        >
+          회원정보 수정
+        </button>
+      </div>
+      <!-- 회원정보란 끝 -->
+      <div
+        class="mt-28 p-2 text-[18pt] font-medium text-left border-b-2 border-color-ter"
+      >
+        <span>주문/배송 조회</span>
+      </div>
+      <div class="relative h-52 mb-40">
+        <div
+          class="mt-4 flex w-3/5 h-3/5 mb-20 justify-evenly items-center mx-auto"
+        >
+          <div class="w-32 h-32">
+            <div
+              class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+            >
+              배송준비중
+            </div>
+            <div
+              id="ready-order-amount"
+              class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+            >
+              0
+            </div>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="rgb(82,82,82)"
+            class="w-12 h-12"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+          <div class="w-32 h-32">
+            <div
+              class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+            >
+              배송중
+            </div>
+            <div
+              id="delivery-order-amount"
+              class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+            >
+              0
+            </div>
+          </div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="rgb(82,82,82)"
+            class="w-12 h-12"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M8.25 4.5l7.5 7.5-7.5 7.5"
+            />
+          </svg>
+          <div class="w-32 h-32">
+            <div
+              class="flex justify-center items-center h-2/5 text-xl text-neutral-600"
+            >
+              배송완료
+            </div>
+            <div
+              id="complete-order-amount"
+              class="flex justify-center items-center h-3/5 text-4xl text-neutral-600 font-bold"
+            >
+              0
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="location.href
+            ='/src/pages/order_list/order_list.html';"
+          class="absolute right-0 inline-block py-3 px-8 mx-6 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none cursor-pointer"
+        >
+          조회하러 가기
+        </button>
+      </div>
+    </main>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

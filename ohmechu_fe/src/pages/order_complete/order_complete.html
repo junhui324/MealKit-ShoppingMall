@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+      defer
+    ></script>
+    <script
+      defer
+      type="module"
+      src="/src/pages/order_complete/order_complete.js"
+    ></script>
+  </head>
+  <body>
+    <!-- 주문 완료 페이지 -->
+    <main role="main" class="w-3/5 mx-auto mt-1 bg-white" id="main-page">
+      <article>
+        <!-- 결제 헤드라인 -->
+        <div class="flex justify-between items-end py-14 whitespace-nowrap">
+          <h2 class="text-4xl font-medium text-left align-left">주문결제</h2>
+          <div class="text-xl">
+            <span class="inline-block align-middle text-stone-400"
+              >01 장바구니</span
+            >
+            <p class="inline-block align-middle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-6 align-middle mx-1 stroke-stone-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </p>
+            <span class="inline-block align-middle text-stone-400"
+              >02 주문결제</span
+            >
+            <p class="inline-block align-middle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-6 align-middle mx-1 stroke-stone-400"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </p>
+            <span class="inline-block align-middle">03 주문완료</span>
+          </div>
+        </div>
+        <div class="pt-8 border-solid border-t-2 border-color-ter">
+          <p class="text-2xl font-bold mt-12">
+            주문이 성공적으로 완료되었습니다!
+          </p>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-circle-check mx-auto my-8"
+          height="350"
+          viewBox="0 0 24 24"
+          stroke-width="0.5"
+          stroke="#607c5f"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="9" />
+          <path d="M9 12l2 2l4 -4" />
+        </svg>
+
+        <div class="text-2xl font-bold">
+          <span class="font-medium mr-3">고객님의 주문번호는</span
+          ><span id="order-id"></span
+          ><span class="font-medium ml-3">입니다.</span>
+        </div>
+
+        <div
+          class="flex inline-block text-[16pt] font-medium text-left pb-3 mt-20 border-solid border-b-2 border-color-ter text-left"
+        >
+          배송지 정보
+        </div>
+        <div class="w-full py-4 w-3/5">
+          <div class="w-max my-5">
+            <p class="inline-block text-lg font-medium text-left mr-6">
+              받는사람
+            </p>
+            <p class="inline-block text-lg text-left" id="receiver-name"></p>
+          </div>
+          <div class="w-max mb-5">
+            <p class="inline-block text-lg font-medium text-left mr-10">
+              연락처
+            </p>
+            <p
+              class="inline-block text-lg text-left"
+              id="receiver-phone-number"
+            ></p>
+          </div>
+          <div class="w-3/5 flex flex-col mb-5">
+            <div class="w-[37px]">
+              <p class="inline-block text-lg font-medium text-left mr-[56px]">
+                주소
+              </p>
+              <p
+                class="inline-block text-lg text-left"
+                id="receiver-postcode"
+              ></p>
+            </div>
+            <p class="ml-[92px] flex flex-start">
+              <span class="text-lg text-left" id="receiver-roadAddress"></span>
+              <span
+                class="ml-3 text-lg text-left"
+                id="receiver-detailAddress"
+              ></span>
+              <span
+                class="ml-3 text-lg text-left"
+                id="receiver-extraAddress"
+              ></span>
+            </p>
+          </div>
+          <div class="w-max">
+            <p class="inline-block text-lg font-medium text-left mr-6">
+              요청사항
+            </p>
+            <p class="inline-block text-lg text-left" id="receiver-request"></p>
+          </div>
+        </div>
+
+        <div
+          class="flex inline-block text-[16pt] font-medium text-left pb-3 mt-20 border-solid border-b-2 border-color-ter text-left"
+        >
+          결제 정보
+        </div>
+        <div class="name flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">구매 금액</p>
+          <p class="text-lg font-medium text-left" id="purchase-amount">원</p>
+        </div>
+        <div class="phone flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">배송비</p>
+          <p class="text-lg font-medium text-left" id="delivery-fee">원</p>
+        </div>
+        <div class="address flex my-6 items-center">
+          <p class="w-1/6 text-lg font-medium text-left">합계</p>
+          <p class="text-lg font-semibold text-left" id="total-amount"></p>
+        </div>
+        <div class="mt-16">
+          <button
+            type="button"
+            id="check-order"
+            class="inline-block py-4 px-14 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-lg font-medium focus:outline-none"
+          >
+            주문확인
+          </button>
+        </div>
+      </article>
+    </main>
+    <!-- 주문 완료 페이지 끝 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

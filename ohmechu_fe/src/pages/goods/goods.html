@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="/src/pages/goods/goods.js"></script>
+  </head>
+  <body>
+    <!-- 메인 페이지 -->
+    <main role="main" class="flex w-3/5 mx-auto mt-1" id="main-page">
+      <div class="inline-block w-1/2 color-sec h-[600px] mr-4">
+        <img src="" /> 이미지 들어갈 공간입니다
+      </div>
+      <div class="inline-block w-1/2 ml-4">
+        <div class="flex flex-col mx-auto justify-center items-center">
+          <p></p>
+          <h3 class="text-center text-3xl font-medium pt-8">스페인식 감바스</h3>
+          <div class="sub-description mt-8">
+            <span class="serving border-r-2 pr-2">2인분</span>
+            <span class="cooking-time border-r-2 pl-1 pr-2">조리 10분</span>
+            <span class="tasty pl-1">약간 매운맛</span>
+            <p
+              class="description w-[90%] mx-auto mt-6 py-4 border-y border-[#22392a] text-lg text-justify whitespace-normal"
+            >
+              감바스는 새우, 마늘, 올리브오일 등을 넣어 만드는 스페인의 대표적인
+              요리로, 식사는 물론 안주로도 즐길 수 있는 아주 매력적인 메뉴에요.
+              새롭게 선보이는 오메추의 스페인식 감바스는 쉽게 구하기 어려운
+              재료들을 한 팩에 넣어 보내드리기 때문에, 간편한 조리법으로 10분
+              만에 완성하실 수 있어요. 존재감 있게 넣은 마늘과, 엑스트라 버진
+              올리브오일로 향긋함까지 더했답니다.
+            </p>
+          </div>
+          <div class="self-end mt-6">
+            <span class="text-right my-auto mr-3 text-color-sec text-lg"
+              >2인분</span
+            >
+            <span class="text-right my-auto h-9 mr-12 text-3xl font-bold"
+              >16,000원</span
+            >
+          </div>
+          <button
+            id="order-product"
+            class="my-auto w-4/5 py-4 mt-12 border border-color-sec hover:bg-[#22392a] hover:border-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
+          >
+            장바구니
+          </button>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

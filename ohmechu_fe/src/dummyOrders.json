@@ -1,0 +1,93 @@
+[
+  {
+    "pid": "644731f2c6006a23cea41393",
+    "orderDetail": [
+      {
+        "id": "1",
+        "amount": 1
+      },
+      {
+        "id": "2",
+        "amount": 10
+      }
+    ],
+    "userName": "김영희",
+    "phoneNumber": "01012342222",
+    "address": {
+      "우편번호": "우편번호",
+      "도로명주소": "도로명주소",
+      "상세주소": "상세주소",
+      "참고사항": "참고사항"
+    },
+    "requirement": "집 앞에 놓아주세요",
+    "purchaseAmount": 10000,
+    "deliveryFee": 3000,
+    "totalAmount": 13000,
+    "orderState": "배송준비중",
+    "createdAt": "2023-04-25T01:36:16.683Z",
+    "updatedAt": "2023-04-25T01:36:16.683Z",
+    "__v": 0
+  },
+  {
+    "pid": "2",
+    "orderDetail": [
+      {
+        "id": "4",
+        "amount": 5
+      },
+      {
+        "id": "5",
+        "amount": 5
+      }
+    ],
+    "userName": "김토끼",
+    "phoneNumber": "01022222222",
+    "address": {
+      "우편번호": "우편번호",
+      "도로명주소": "도로명주소",
+      "상세주소": "상세주소",
+      "참고사항": "참고사항"
+    },
+    "requirement": "집 앞에 놓아주세요",
+    "purchaseAmount": 10000,
+    "deliveryFee": 3000,
+    "totalAmount": 13000,
+    "orderState": "배송중",
+    "createdAt": "2023-04-25T01:36:16.683Z",
+    "updatedAt": "2023-04-25T01:36:16.683Z",
+    "__v": 0
+  },
+  {
+    "pid": "3",
+    "orderDetail": [
+      {
+        "id": "1",
+        "amount": 1
+      },
+      {
+        "id": "2",
+        "amount": 2
+      },
+      {
+        "id": "4",
+        "amount": 99
+      }
+    ],
+    "userName": "김엘리스",
+    "phoneNumber": "01099999999",
+    "address": {
+      "우편번호": "우편번호",
+      "도로명주소": "도로명주소",
+      "상세주소": "상세주소",
+      "참고사항": "참고사항"
+    },
+    "requirement": "집 앞에 놓아주세요",
+    "purchaseAmount": 10000,
+    "deliveryFee": 3000,
+    "totalAmount": 13000,
+    "orderState": "배송완료",
+    "createdAt": "2023-04-25T01:36:16.683Z",
+    "updatedAt": "2023-04-25T01:36:16.683Z",
+    "__v": 0
+  }
+]

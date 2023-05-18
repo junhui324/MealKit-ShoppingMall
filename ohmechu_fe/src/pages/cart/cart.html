@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="kr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OHMECHU :: 오늘의 메뉴 추천</title>
+    <link rel="stylesheet" type="text/css" href="/src/pages/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script defer type="module" src="cart.js"></script>
+  </head>
+  <body>
+    <!-- 메인 페이지 -->
+    <main role="main" class="w-3/5 mx-auto mt-1" id="cartpage__main">
+      <!--페이지 상단-->
+      <div
+        class="about-order flex justify-between items-end pt-14 whitespace-nowrap"
+      >
+        <h2 class="text-4xl font-medium text-left align-left">장바구니</h2>
+        <div class="text-xl">
+          <span class="inline-block align-middle">01 장바구니</span>
+          <p class="inline-block align-middle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-5 h-6 align-middle mx-1"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </p>
+          <span class="inline-block align-middle text-stone-400"
+            >02 주문·결제</span
+          >
+          <p class="inline-block align-middle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="w-5 h-6 align-middle mx-1 stroke-stone-400"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M8.25 4.5l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </p>
+          <span class="inline-block align-middle text-stone-400"
+            >03 주문완료</span
+          >
+        </div>
+      </div>
+      <!-- 로그인이 되지 않았을 때 -->
+      <div
+        id="login-box"
+        class="flex justify-between items-center border border-solid border-color-sec px-3 py-5 my-12 text-color-ter whitespace-nowrap"
+      >
+        <p class="inline-block ml-6 text-base">
+          <a href="/src/pages/login/login.html"
+            >지금 로그인하여 다양한 혜택을 즐겨보세요.</a
+          >
+        </p>
+        <button
+          type="button"
+          class="inline-block py-3 px-12 mr-6 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium"
+        >
+          로그인
+        </button>
+      </div>
+      <!-- 장바구니에 담긴 상품 목록 -->
+      <div class="whitespace-nowrap">
+        <div>
+          <!-- 전체 선택, 상품 목록 수 -->
+          <div class="flex items-center pb-4">
+            <input
+              type="checkbox"
+              name="cartProducts"
+              id="all-products-select"
+              value="all"
+              class="appearance-none w-6 h-6 cursor-pointer rounded-full bg-gray-300 focus:outline-none checked:bg-[#607c5f]"
+              checked
+            />
+            <label class="text-[18pt] font-medium ml-2"
+              >총 <span id="cart-amount">0</span>개</label
+            >
+          </div>
+          <!-- 장바구니 상품 리스트 -->
+          <div class="pt-8 border-solid border-t-2 border-color-ter">
+            <ul id="cart-list">
+              <!-- JS를 통해 li가 입력 될 예정-->
+            </ul>
+          </div>
+        </div>
+        <!-- 상품 삭제 & 상품 금액 -->
+        <div
+          id="delete-and-bill"
+          class="flex justify-between items-center pb-6 border-b"
+        >
+          <div>
+            <button
+              id="delete-all"
+              type="button"
+              class="inline-block mr-1 py-2 px-5 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
+            >
+              전체삭제
+            </button>
+            <button
+              id="delete-select"
+              type="button"
+              class="inline-block py-2 px-5 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
+            >
+              선택삭제
+            </button>
+          </div>
+          <div class="inline-block text-xl">
+            <span class="text-color-sec">상품구매금액</span
+            ><span id="purchase-price" class="mx-1 ml-3 font-bold">0</span
+            ><span class="font-bold">원</span><span class="mx-2">&#43;</span
+            ><span class="text-color-sec">배송비</span
+            ><span id="delivery-price" class="mx-1 ml-3 font-bold">0</span
+            ><span class="mx-1 ml-3 font-bold">원</span
+            ><span class="mx-2">&#61;</span><span>합계</span
+            ><span id="total-price" class="mx-1 ml-3 font-bold">0</span
+            ><span class="font-bold">원</span>
+          </div>
+        </div>
+        <!-- 상품 주문 버튼 -->
+        <div id="order-buttons" class="mt-16">
+          <button
+            id="order-select"
+            type="button"
+            class="inline-block py-3 px-12 mr-6 border border-color-sec hover:bg-[#22392a] hover:border-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
+          >
+            선택상품주문</button
+          ><button
+            id="order-all"
+            type="button"
+            onclick="location.href
+            ='/src/pages/order/order.html';"
+            class="inline-block py-3 px-12 mr-6 border border-color-sec hover:bg-[#22392a] hover:border-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
+          >
+            전체상품주문
+          </button>
+        </div>
+      </div>
+      <!-- 장바구니에 상품이 없을 때 -->
+      <div
+        id="empty-cart-notice"
+        class="hidden whitespace-nowrap flex flex-col justify-center items-center mt-8"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="pl-2"
+          width="300"
+          height="300"
+          viewBox="0 0 24 24"
+          stroke-width="0.5"
+          stroke="#607c5f"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <circle cx="12" cy="12" r="9" />
+          <line x1="12" y1="8" x2="12" y2="13.5" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        <p class="text-2xl font-bold mb-5 mt-4">
+          장바구니에 담긴 상품이 없습니다.
+        </p>
+        <button
+          id="category-move-button"
+          type="button"
+          class="inline-block py-4 px-12 bg-[#607c5f] text-[#f7f3eb] hover:bg-[#22392a] hover:text-[#f7f3eb] trans text-center text-base font-medium focus:outline-none"
+        >
+          OHMECHU 인기상품 보러가기
+        </button>
+      </div>
+    </main>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>
+
+<!-- https://tailwindcomponents.com/component/shopping-cart-responsive -->
+<!-- https://tailwindcomponents.com/component/manage-product-cart -->

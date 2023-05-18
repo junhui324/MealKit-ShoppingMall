@@ -1,0 +1,109 @@
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  text-align: center;
+  font-family: 'NanumSquareNeo-Variable', sans-serif;
+  letter-spacing: -0.04em;
+  background-color: #f7f3eb;
+  white-space: nowrap;
+  color: #22392a;
+}
+
+div,
+a,
+li,
+p,
+span,
+svg {
+  background-color: transparent;
+}
+
+.bg-tr {
+  background-color: transparent;
+}
+.color-pri {
+  background-color: #f7f3eb;
+}
+.color-sec {
+  background-color: #607c5f;
+}
+.color-ter {
+  background-color: #22392a;
+}
+.border-color-pri {
+  border-color: #f7f3eb;
+}
+.border-color-sec {
+  border-color: #607c5f;
+}
+.border-color-ter {
+  border-color: #22392a;
+}
+.text-color-pri {
+  color: #f7f3eb;
+}
+.text-color-sec {
+  color: #607c5f;
+}
+.text-color-ter {
+  color: #22392a;
+}
+
+@keyframes cartIn {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -10px);
+  }
+  50% {
+    transform: translate(0, 0);
+  }
+  75% {
+    transform: translate(0, -5px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+*:focus {
+  outline: none;
+}
+
+.trans {
+  transition: background-color ease-in 300ms;
+}
+
+table,
+tr {
+  text-align: left;
+  padding: 0.7rem;
+  width: 100%;
+}
+td {
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.slider {
+  display: flex;
+  width: 500%;
+  height: 100%;
+  transition: transform 500ms ease-out;
+}
+
+.slide {
+  width: 20%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  transition: transform 500ms ease-out;
+}
